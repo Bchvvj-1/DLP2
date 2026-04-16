@@ -1,0 +1,65 @@
+a) Do While Loop (Print numbers from 5 to 1)
+
+Step 1: Open UiPath Studio and create a New Process
+Step 2: Open Main.xaml
+Step 3: Drag a Sequence into the workspace (if not already present)
+Step 4: Create a variable:
+Name: num
+Type: Int32
+Default Value: 5
+
+Step 5: Drag a Do While activity inside the Sequence
+Step 6: Set the condition of Do While: num >= 1
+Step 7: Inside the Do While body, drag a Write Line activity
+Step 8: Set its value:
+num.ToString
+Step 9: Drag an Assign activity below Write Line
+Step 10: Set:
+num = num - 1
+Step 11: Run the workflow
+
+b) Delay Activity (5 seconds gap)
+
+Step 1: Open Main.xaml
+Step 2: Drag a Sequence
+
+Step 3: Drag a Write Line activity
+Step 4: Enter:
+
+"First message"
+
+Step 5: Drag a Delay activity below it
+Step 6: Set Duration:
+
+00:00:05
+
+Step 7: Drag another Write Line activity
+Step 8: Enter:
+
+"Second message"
+
+Step 9: Run the workflow
+
+ c) If Condition (Decision Making)
+
+Step 1: Open Main.xaml
+Step 2: Drag a Sequence
+Step 3: Create a variable:
+Name: num
+Type: Int32
+Value: 10
+
+Step 4: Drag an If activity
+Step 5: Set the condition:
+
+num Mod 2 = 0
+
+Step 6: In the Then section, add a Write Line
+Step 7: Enter:
+"Number is Even"
+
+Step 8: In the Else section, add a Write Line
+Step 9: Enter:
+"Number is Odd"
+
+Step 10: Run the workflow
