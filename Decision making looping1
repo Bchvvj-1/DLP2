@@ -1,0 +1,49 @@
+2a. Consider an array of names. We have to find out how many of them start with the letter 
+"a". Create an automation where the number of names starting with "a" is counted and the 
+result is displayed. 
+Step-1: click on Process 
+Step-2: Give name to the practical and click on create
+Step-3: create a sequence by using activity search column 
+Step-4: select assign option from search activities option 
+Step-5: set variables and give random names in value to save option in assign box 
+Step-6: select for each option from search activities 
+step 7:The further steps are as follows:
+a) define names value in variables in for each current text. 
+b) Set an assign box inside body of an for each current text. 
+[value to save-currentText.Substring(0, 1)] 
+c) Set an If condition on condition* [firstletter.ToLower.Equals("a")]. 
+d) Follow the image for further commands and reference. 
+Step-8: Click on debug file and run the sequence
+
+
+2b. Demonstrate switch statement with an example. 
+Step-1: click on Process
+Step-2: Give name to the practical and click on create 
+Step-3: The sequence model are as follows: 
+a) Make an sequence box by using search activities 
+b) Then make an input dialog box 
+c) Then give five switch statement in switch option provided by search activities 
+d) Set variable value as number 
+e) Follow the image for sequence model 
+Click on debug file and run the sequence.
+
+
+2c. Create an automation To Print numbers from 1 to 10 with break after the writeline 
+activity inside for each activity 
+Step-1: click on Process 
+Step-2: Give name to the practical and click on create 
+Step-3: select the options as follows: 
+a) First select the sequence option. 
+b) Then select the do while option from search activities 
+c) Select the write line option and drag in side the body option 
+d) Connect the assign box to the write line 
+e) Define the variable Int 
+f) 
+Give condition as Int<11 
+Step-4: click on debug file option and get the output 
+
+
+
+
+
+3a. Create an automation using Do..While Activity to print numbers from 5 to 1 
