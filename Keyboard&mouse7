@@ -1,0 +1,54 @@
+a. Keyboard and Mouse Activities
+These are "Actions"—the bot proactively does something.
+i. Mouse (Click, Double Click, Hover)
+Click: Drag the Click activity. Click "Indicate on screen" and select a button.
+Practical Tip: In Properties, you can change the ClickType to CLICK_SINGLE.
+Double Click: Drag the Double Click activity. It works exactly like the Click activity but triggers a double-click (useful for opening desktop icons).
+Hover: Drag the Hover activity. This moves the mouse over an element without clicking it.
+
+Use Case: Use this to trigger "hover-over" menus on websites.
+
+ii. Type Into
+Drag Activity: Search for Type Into.
+Indicate: Select a text field (like a Search bar).
+Input Text: Type your text in double quotes: "Hello UiPath".
+
+Special Keys: You can add keys like Enter by selecting them from the "Plus" (+) menu in the activity.
+
+iii. Type Secure Text
+Purpose: Used for typing passwords so they aren't visible in the code.
+Steps:
+First, you must have a SecureString variable (usually retrieved from a "Get Password" activity).
+Drag Type Secure Text.
+In the SecureText property, enter your SecureString variable.
+
+b. Triggering Events
+These are "Listeners"—the bot waits for something to happen before it starts an action.
+i. Element Triggering Event
+Use the Monitor Events activity container.
+Inside it, drag an On Element Appear trigger.
+Indicate: Select a pop-up window or a specific button.
+Action: In the Event Handler block, put a Message Box. The bot will now sit and wait until that element shows up before showing the message.
+
+ii. Image Triggering Event
+Inside Monitor Events, drag On Image Appear.
+Indicate: Draw a box around a specific logo or icon on the screen.
+Result: The bot will monitor the screen and trigger the action only when that specific image is visible.
+
+iii. System Triggering Event
+Inside Monitor Events, drag a System Trigger.
+Configure: In Properties, choose the Type. Options include things like "Low Battery" or "Power Connected."
+Action: The bot executes the workflow when that specific system state changes.
+
+c. Launch Assistant Bot on Keyboard Event
+This is a classic "HotKey" trigger. This bot "sleeps" until you press a specific key combination.
+Open a New Sequence: Name it HotKeyTrigger.
+Add Activity: Search for Monitor Events and drag it in.
+Add Trigger: Drag the Hotkey Trigger inside the "Triggers" section.
+
+Configure Keys:
+In the Properties, set Key to "s" (or any letter).
+Check the box for Alt or Ctrl.
+Result: The bot is now listening for Alt + S.
+Set the Action: Inside the Event Handler section of the Monitor Events, drag the activities you want your "Assistant" to do (e.g., Open a specific website or Excel file).
+Run: When you run this, the bot will stay in "Running" mode. As soon as you press Alt + S, the Assistant bot will execute.
