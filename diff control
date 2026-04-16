@@ -1,54 +1,110 @@
-1. The Setup (Before you build)
-Open UiPath Studio.
-Create a Project: Click on Process (under "New Project").
-Name it: Give it a name like Practical_Automation and click Create.
-Open the Workspace: Click on Open Main Workflow in the center of the screen. You now have a blank canvas.
+a) Implement Attach Window Activity
 
-2. Implementing the Controls (Step-by-Step)
-a. Attach Window (The Container)
-This is the "Parent" activity. You put other actions inside it.
-Search for Attach Window in the Activities panel (Left side).
-Drag it into the Sequence in the middle.
-Click "Indicate window on screen".
-Click the window you want to automate (e.g., a Chrome page or a Folder).
+Step 1: Open UiPath Studio → Create Blank Process
+Step 2: Drag a Sequence
 
-Inside the 'Do' block: Now drag any other activity (like Type Into) inside this box.
+Step 3: Drag Attach Window activity
+Step 4: Click Indicate on screen
+Step 5: Select the application window (e.g., Notepad)
 
-b. Anchor Base (Finding by Label)
-Use this when a text box doesn't have a unique ID.
-Drag the Anchor Base activity into your workflow.
-Left Side (Anchor): Drag a Find Element activity here. Click "Indicate" and select the label text (e.g., the word "Username").
-Right Side (Action): Drag a Type Into activity here. Click "Indicate" and select the empty box next to that label.
+Step 6: Inside Attach Window, add activities like:
 
-In Properties, ensure AnchorPosition is set to Auto or Left.
+Click
+Type Into
 
-c. Element Exists (The "Safety Check")
-Use this to see if a button is there before clicking it.
+Step 7: Configure the activities as required
 
-Drag Element Exists into the sequence.
-Click "Indicate on screen" and select a button or logo.
-Variable Creation: In the Properties panel, look for Exists. Click the empty box next to it and press Ctrl + K. Type isFound.
-The Logic: Drag an If activity below it.
-In the Condition, type isFound.
+Step 8: Run the workflow
 
-In the Then block, drag a Click activity. (The bot will only click if the element was found).
+Result: All actions will be performed inside the selected window
 
-d. Find Children (Gathering a List)
-Drag Find Children into the sequence.
-Click "Indicate on screen" and select a container (like a Taskbar or a Dropdown menu).
-Variable Creation: In the Properties (under Output > Children), press Ctrl + K and type childElements.
-Looping: Drag a For Each activity. Set the input to childElements.
-Inside the loop, use a Log Message to print item.Selector.ToString.
+b) Automate using Anchor Base
 
-3. How to Run & Test
-Save: Always click the Save icon (Disk icon) at the top left.
-Debug/Run: * Press F5 to run the whole thing.
-Press the Debug File button to watch it run step-by-step.
-Watch the Output: Keep an eye on the Output Panel (usually at the bottom left). It will tell you if the bot succeeded or if it crashed and why.
+Step 1: Open UiPath Studio
+Step 2: Drag Anchor Base activity
 
-4. Troubleshooting for Beginners
-"Activity not found": If you can't find an activity, click the Filter icon in the Activities panel and check "Show Classic".
+Step 3: In Anchor, drag Find Element
+Step 4: Click Indicate on screen → select a stable label/text
 
-The Blue Warning Icon: If you see a small blue "!" on your activity, it means a property is missing (usually you forgot to create a variable or indicate an element).
+Step 5: In Action, drag activity (e.g., Click / Type Into)
+Step 6: Indicate the target element (near the anchor)
 
-Selectors: If the bot fails to find an element, click the Hamburger menu (≡) on the activity and select Edit Selector to see what the bot is looking for.
+Step 7: Run the workflow
+
+Result: Automation works even if UI positions change
+
+c) Automate using Element Exists
+
+Step 1: Open UiPath Studio
+Step 2: Drag Element Exists activity
+
+Step 3: Click Indicate on screen
+Step 4: Select the element to check
+
+Step 5: Create Boolean variable isPresent
+
+Step 6: Drag If activity
+Step 7: Set condition:
+
+isPresent = True
+
+Step 8: In Then → add action (e.g., Message Box "Element Found")
+Step 9: In Else → add action (e.g., Message Box "Not Found")
+
+Step 10: Run the workflow
+
+d) Automate using Find Children
+
+Step 1: Open UiPath Studio
+Step 2: Drag Find Children activity
+
+Step 3: Click Indicate on screen
+Step 4: Select parent element (e.g., table/list)
+
+Step 5: Create variable childrenList (IEnumerable<UiElement>)
+
+Step 6: Drag For Each activity
+Step 7: Set TypeArgument → UiElement
+Step 8: Input → childrenList
+
+Step 9: Inside loop, use activities like:
+
+Get Text
+Click
+
+Step 10: Run the workflow
+
+e) Use Get Ancestor Control
+
+Step 1: Open UiPath Studio
+Step 2: Drag Get Ancestor activity
+
+Step 3: Click Indicate on screen
+Step 4: Select a child element
+
+Step 5: Set Levels Up (e.g., 1 or 2)
+
+Step 6: Store output in variable parentElement
+
+Step 7: Use this element in further activities (Click, Get Text)
+
+Step 8: Run the workflow
+
+f) Use Find Relative Control
+
+Step 1: Open UiPath Studio
+Step 2: Drag Find Relative Element activity
+
+Step 3: Set Anchor Element:
+
+Use Indicate on screen → select reference element
+
+Step 4: Set Relative Element:
+
+Indicate the target element
+
+Step 5: Store result in variable
+
+Step 6: Use the element in further actions (Click, Get Text)
+
+Step 7: Run the workflow
