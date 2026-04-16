@@ -1,0 +1,45 @@
+1. Screen Scraping Methods
+Screen scraping is used for UI elements that don't have a clear "data" structure.
+
+Common Initial Steps:
+Open UiPath Studio and create a Blank Process.
+On the Design tab (Top Ribbon), click the Screen Scraping icon.
+Use the mouse to click the application or window you want to scrape. This opens the Screen Scraper Wizard.
+
+
+a. Full Text
+Best for: High-speed extraction; can read hidden text.
+Step: In the Wizard’s Scraping Method dropdown (right side), select Full Text.
+Note: This is the default method. It captures the text but ignores the formatting/layout.
+
+Finish: Click Finish. UiPath generates a sequence with a Get Full Text activity.
+
+b. Native
+Best for: Extracting text from applications that use GDI (like Notepad or older Windows apps); preserves text position.
+Step: Change the dropdown to Native.
+Options: Check No Formatting if you only want the raw text, or leave it unchecked to keep the relative positions of the words.
+Finish: Click Finish. UiPath generates a Get Visible Text activity.
+
+c. OCR (Optical Character Recognition)
+Best for: Scanned documents, virtual machines (Citrix/RDP), or images where text is not selectable.
+Step: Select OCR in the dropdown.
+Engine: Choose an OCR Engine (e.g., Tesseract OCR or UiPath Screen OCR).
+Finish: Click Finish. This creates a Get OCR Text activity with the chosen engine inside it.
+
+2. Data Scraping & Variable Display
+Data Scraping is used specifically for structured data like tables, lists, or search results on a webpage.
+Demonstrate Data Scraping (Web Page):
+Open a browser (e.g., a search results page on Google or Amazon).
+
+Click the Table Extraction (Modern) or Data Scraping (Classic) icon in the Ribbon.
+Indicate: Select the first element (e.g., the name of a product).
+
+Pattern: Select a similar second element (the wizard will automatically identify the entire list).
+Rename: Rename the column (e.g., "Product Name") and click Next.
+Extract Correlated Data: Click "Extract Correlated Data" to pick another field, like "Price".
+Output: Click Finish. It will generate an Extract Structured Data activity and store results in a variable called ExtractDataTable.
+
+Display in Message Box:
+
+Drag an Output Data Table activity. Set input to ExtractDataTable and create a string variable dtString (Ctrl+K).
+Drag a Message Box and input dtString.
