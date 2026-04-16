@@ -1,43 +1,103 @@
-a. Configure Email using UiPath (IMAP/SMTP)
-This configuration allows UiPath to talk to servers like Gmail, Outlook.com, or Yahoo.
-Open UiPath Studio: Create a new Process.
-Check Activities: In the Activities panel, search for "IMAP". If not found, go to Manage Packages > All Packages and install UiPath.Mail.Activities.
-Drag Activity: Drag the Get IMAP Mail Messages activity into the Designer panel.
-Enter Server Details: In the Properties panel:
-Port: 993 (for IMAP) or 465/587 (for SMTP).
-Server: "imap.gmail.com" or your specific provider's server address.
-Logins: Enter your email address and App Password (not your regular login password) in quotes.
 
-b. Read Emails
-Once configured, you need to extract the emails into a format the bot can understand.
-Define Folder: In the Get IMAP Mail Messages properties, set MailFolder to "Inbox".
-Filter Settings: Check the box for OnlyUnreadMessages if you only want new mail.
-Set Limit: Set the Top property to 5 to read only the five most recent emails.
-Create Output Variable: In the Messages field of the Properties panel, press Ctrl + K and name the variable mailList.
+a) Configure Email using UiPath (Gmail/Outlook)
+🔸 Using Gmail
 
-Note: This creates a variable of type List<MailMessage>.
+Step 1: Open UiPath Studio → Create Blank Process
+Step 2: Go to Manage Packages → Install UiPath.GSuite.Activities
 
-View Output: Drag a For Each activity. Set the type argument to System.Net.Mail.MailMessage and the input to mailList. Inside, use a Log Message activity with item.Subject to see the titles in the Output console.
+Step 3: Drag Use Gmail activity
+Step 4: Click Sign In
+Step 5: Select your Gmail account and allow permissions
 
-c. Send Email with Attachment
-Sending an email requires the SMTP activity (or Outlook activity if the desktop app is installed).
-Drag Activity: Search for and drag the Send SMTP Mail Message activity.
-Configure Recipients: Fill in the To, Subject, and Body fields (all text must be in double quotes).
-Attach File: * In the Properties panel, click the "..." (ellipses) next to Attachments.
-Click Create Argument.
-In the Value field, provide the full file path: "C:\Users\Name\Documents\Report.pdf".
-Port/Server: Enter "smtp.gmail.com" and port 465. Ensure the Secure Connection (SSL) is set to Auto or SSL.
+Step 6: Inside Use Gmail, add email activities (Read, Send, etc.)
+Step 7: Run the workflow
 
-d. Save Email Attachments & Reply to Email
-These actions are performed inside a loop to process individual emails.
+🔸 Using Outlook
 
-Save Attachments
-Inside For Each Loop: Drag the Save Attachments activity.
-Set Input: In the Message property, type item (the current mail object from your loop).
-Folder Path: Create a folder on your desktop and provide that path in the FolderPath property (e.g., "C:\SavedAttachments\").
+Step 1: Install UiPath.Mail.Activities package
+Step 2: Drag Use Outlook 365 or Outlook Application Scope
 
-Reply to Email
-Drag Activity: Place the Reply To Mail Message activity after the Save Attachment activity.
-Reference Original: In the MailMessage property, enter item.
-Compose Reply: Type your message in the Body field (e.g., "Hello, I have received your attachment and saved it. - Bot").
-Optional: Check ReplyEntireSession if you wish to "Reply All" to everyone in the thread.
+Step 3: Configure account (if required)
+Step 4: Add email activities inside the scope
+Step 5: Run the workflow
+
+b) Read Emails
+
+Step 1: Drag Use Gmail or Use Outlook 365
+
+Step 2: Inside it, drag Get Mail Messages activity
+
+Step 3: Configure:
+
+MailFolder → "Inbox"
+Top → e.g., 5
+
+Step 4: Create variable mailList (List of MailMessage)
+
+Step 5: Drag For Each activity
+Step 6: Set TypeArgument → MailMessage
+Step 7: Input → mailList
+
+Step 8: Inside loop, drag Message Box
+Step 9: Enter:
+
+item.Subject
+
+Step 10: Run the workflow
+
+c) Send Email with Attachment
+
+Step 1: Drag Use Gmail or Use Outlook 365
+
+Step 2: Inside it, drag Send Mail activity
+
+Step 3: Set:
+
+To → "example@gmail.com"
+Subject → "Test Email"
+Body → "This is an automated email"
+
+Step 4: In Attachments field, add file path
+Example:
+
+"C:\Users\YourName\Documents\file.pdf"
+
+Step 5: Run the workflow
+
+d) Save Email Attachments
+
+Step 1: Drag Use Gmail / Use Outlook 365
+
+Step 2: Drag Get Mail Messages
+
+Step 3: Store output in mailList
+
+Step 4: Drag For Each loop
+Step 5: Input → mailList
+
+Step 6: Inside loop, drag Save Attachments activity
+
+Step 7: Set:
+
+MailMessage → item
+FolderPath → "C:\Attachments"
+
+Step 8: Run the workflow
+
+e) Reply to Email
+
+Step 1: Drag Use Gmail / Use Outlook 365
+
+Step 2: Drag Get Mail Messages
+Step 3: Store in mailList
+
+Step 4: Drag For Each loop
+
+Step 5: Inside loop, drag Reply to Mail Message activity
+
+Step 6: Set:
+
+MailMessage → item
+Body → "Thank you for your email"
+
+Step 7: Run the workflow
