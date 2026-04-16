@@ -1,0 +1,133 @@
+🔹 a) Basic Recording using Toolbar
+
+Step 1: Open UiPath Studio
+Step 2: Create a Blank Process
+Step 3: Go to the Design tab (Top Ribbon)
+Step 4: Click on Recording
+Step 5: Select Basic
+
+Step 6: Choose the application window where you want to record
+Step 7: Perform actions like:
+
+click button
+type text
+select menu
+
+Step 8: Click Save & Exit after recording
+
+Result:
+UiPath automatically generates activities like Click, Type Into, Select Item
+
+🔹 b) Basic Recording using Notepad
+
+Step 1: Open Notepad on your computer
+Step 2: Open UiPath Studio
+Step 3: Go to Design → Recording → Basic
+
+Step 4: Select the Notepad window
+
+Step 5: Click inside Notepad and type:
+
+Hello UiPath
+
+Step 6: Stop recording by clicking Save & Exit
+
+Result:
+Workflow will contain:
+
+Click activity
+Type Into activity
+🔹 c) Desktop Recording using Toolbar
+
+Step 1: Open UiPath Studio
+Step 2: Go to Design tab
+Step 3: Click Recording
+Step 4: Select Desktop
+
+Step 5: Choose desktop application/window
+
+Step 6: Perform actions like:
+
+open file
+click menus
+enter text
+use keyboard shortcuts
+
+Step 7: Click Save & Exit
+
+Result:
+Desktop recording creates a container activity with multiple actions inside
+
+🔹 d) Desktop Recording by Creating a Workflow
+
+Step 1: Create a New Sequence / Workflow
+Step 2: Drag Open Application activity
+
+Step 3: Indicate the desktop application
+Example: Notepad
+
+Step 4: Inside Do container, drag activities like:
+
+Click
+Type Into
+Hover
+
+Step 5: Add required actions manually
+
+Step 6: Run the workflow
+
+🔹 e) Web Recording
+Example: Find movie rating from IMDb website
+
+Step 1: Open UiPath Studio
+Step 2: Go to Design → Recording → Web
+
+Step 3: Open browser with IMDb website
+Example: IMDb
+
+Step 4: Click on search bar
+
+Step 5: Type movie name
+Example:
+
+"Inception"
+
+Step 6: Press Enter
+
+Step 7: Click on movie result
+
+Step 8: Use Get Text activity to extract rating
+
+Step 9: Store output in variable rating
+
+Step 10: Use Message Box to display:
+
+rating
+🔹 f) Web Recording Manually
+
+Step 1: Create a New Sequence
+Step 2: Drag Use Application/Browser activity
+
+Step 3: Indicate browser window
+
+Step 4: Drag Type Into activity
+Select search box
+
+Step 5: Enter text:
+
+"Inception"
+
+Step 6: Drag Click activity
+Click search button
+
+Step 7: Drag Get Text activity
+Select rating text
+
+Step 8: Store in variable rating
+
+Step 9: Drag Message Box
+Enter:
+
+rating
+
+Step 10: Run the workflow
