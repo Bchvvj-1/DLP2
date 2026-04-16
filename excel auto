@@ -1,0 +1,129 @@
+a) Extract data from Excel to DataTable and vice versa
+🔸 Read Excel → DataTable
+
+Step 1: Open UiPath Studio → Create Blank Process
+Step 2: Drag Use Excel File activity
+Step 3: Select your Excel file
+
+Step 4: Inside it, drag Read Range activity
+Step 5: Leave Range empty (to read full sheet)
+Step 6: Create variable → dtData (DataTable)
+
+Step 7: Run the workflow
+
+🔸 Write DataTable → Excel
+
+Step 8: Drag Write Range activity
+Step 9: Set:
+
+DataTable → dtData
+Sheet Name → "Sheet1"
+
+Step 10: Run the workflow
+
+b) Write data to specific cell
+
+Step 1: Drag Use Excel File activity
+Step 2: Select Excel file
+
+Step 3: Drag Write Cell activity
+Step 4: Set:
+
+Cell → "A1"
+Value → "Hello Excel"
+
+Step 5: Run the workflow
+
+c) Read data from specific cell
+
+Step 1: Drag Use Excel File activity
+Step 2: Select Excel file
+
+Step 3: Drag Read Cell activity
+Step 4: Set:
+
+Cell → "A1"
+Output → create variable cellValue
+
+Step 5: Drag Message Box
+Step 6: Enter:
+
+cellValue
+
+Step 7: Run the workflow
+
+d) Append data to Excel sheet
+
+Step 1: Drag Use Excel File activity
+Step 2: Select Excel file
+
+Step 3: Create DataTable with data OR use existing one
+
+Step 4: Drag Append Range activity
+Step 5: Set:
+
+DataTable → your data
+Sheet Name → "Sheet1"
+
+Step 6: Run the workflow
+
+e) Sort a table in Excel
+
+Step 1: Drag Use Excel File activity
+Step 2: Select Excel file
+
+Step 3: Drag Sort Range activity
+Step 4: Set:
+
+Range → e.g., "A1:C10"
+Column → select column to sort
+Order → Ascending / Descending
+
+Step 5: Run the workflow
+
+f) Filter a table in Excel
+
+Step 1: Drag Use Excel File activity
+Step 2: Select Excel file
+
+Step 3: Drag Filter Table activity
+Step 4: Set:
+
+Range → e.g., "A1:C10"
+Column → select column
+Condition → e.g., "Greater than 100"
+
+Step 5: Run the workflow
+
+🔹 g) Mini Project: Automate a Repetitive Task
+🔸 Example Task: Extract and Save Daily Expense Data
+Objective:
+
+Automatically read expenses from Excel, filter high expenses, and save results.
+
+Steps:
+
+Step 1: Open UiPath Studio → Create New Process
+
+Step 2: Drag Use Excel File → Select expense file
+
+Step 3: Drag Read Range → store in dtExpenses
+
+Step 4: Drag Filter Data Table activity
+Step 5: Set condition:
+
+Column: Amount
+Condition: Greater than 500
+
+Step 6: Store output in filteredData
+
+Step 7: Drag another Use Excel File (output file)
+
+Step 8: Drag Write Range
+Step 9: Set:
+
+DataTable → filteredData
+
+Step 10: Add Message Box → "Process Completed"
+
+Step 11: Run the workflow
