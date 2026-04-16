@@ -1,0 +1,54 @@
+1. The Setup (Before you build)
+Open UiPath Studio.
+Create a Project: Click on Process (under "New Project").
+Name it: Give it a name like Practical_Automation and click Create.
+Open the Workspace: Click on Open Main Workflow in the center of the screen. You now have a blank canvas.
+
+2. Implementing the Controls (Step-by-Step)
+a. Attach Window (The Container)
+This is the "Parent" activity. You put other actions inside it.
+Search for Attach Window in the Activities panel (Left side).
+Drag it into the Sequence in the middle.
+Click "Indicate window on screen".
+Click the window you want to automate (e.g., a Chrome page or a Folder).
+
+Inside the 'Do' block: Now drag any other activity (like Type Into) inside this box.
+
+b. Anchor Base (Finding by Label)
+Use this when a text box doesn't have a unique ID.
+Drag the Anchor Base activity into your workflow.
+Left Side (Anchor): Drag a Find Element activity here. Click "Indicate" and select the label text (e.g., the word "Username").
+Right Side (Action): Drag a Type Into activity here. Click "Indicate" and select the empty box next to that label.
+
+In Properties, ensure AnchorPosition is set to Auto or Left.
+
+c. Element Exists (The "Safety Check")
+Use this to see if a button is there before clicking it.
+
+Drag Element Exists into the sequence.
+Click "Indicate on screen" and select a button or logo.
+Variable Creation: In the Properties panel, look for Exists. Click the empty box next to it and press Ctrl + K. Type isFound.
+The Logic: Drag an If activity below it.
+In the Condition, type isFound.
+
+In the Then block, drag a Click activity. (The bot will only click if the element was found).
+
+d. Find Children (Gathering a List)
+Drag Find Children into the sequence.
+Click "Indicate on screen" and select a container (like a Taskbar or a Dropdown menu).
+Variable Creation: In the Properties (under Output > Children), press Ctrl + K and type childElements.
+Looping: Drag a For Each activity. Set the input to childElements.
+Inside the loop, use a Log Message to print item.Selector.ToString.
+
+3. How to Run & Test
+Save: Always click the Save icon (Disk icon) at the top left.
+Debug/Run: * Press F5 to run the whole thing.
+Press the Debug File button to watch it run step-by-step.
+Watch the Output: Keep an eye on the Output Panel (usually at the bottom left). It will tell you if the bot succeeded or if it crashed and why.
+
+4. Troubleshooting for Beginners
+"Activity not found": If you can't find an activity, click the Filter icon in the Activities panel and check "Show Classic".
+
+The Blue Warning Icon: If you see a small blue "!" on your activity, it means a property is missing (usually you forgot to create a variable or indicate an element).
+
+Selectors: If the bot fails to find an element, click the Hamburger menu (≡) on the activity and select Edit Selector to see what the bot is looking for.
