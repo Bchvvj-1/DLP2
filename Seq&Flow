@@ -1,0 +1,49 @@
+1a. Create a simple sequence-based project. 
+Step-1: click on Process 
+Step-2: Give name to the practical and click on create
+Step-3: Go to Search activities on the activities bar: 
+Step-4: Drag and drop the sequence option in the main file 
+Step-5: Then drag and drop the two input dialog box and message box in sequence box 
+Step-6: Then print names as an example of sequence-based project 
+a) Write “PrintingNames” in both input dialog box at Dialog Title option. 
+b) Write “FrirstName” in first input dialog box and write “Lastname” in second input 
+dialog box at input label option 
+c) Select input type text box 
+d) Put FirstName at value entered option in first input dialog box and put LastName at 
+value entered option at second input dialog box. 
+e) Write FirstName+””+Lastname in text option of message box 
+f) 
+Then click on Debug file option at the top left 
+
+
+1b. Create a flowchart-based project. 
+Step-1: click on Process
+Step-2: Give name to the practical and click on create 
+Step-3: Go to drop down of new and click on flowchart.
+Step-4: Give name and save the file. 
+Step-5: Make an simple flow chart by printing your full name or college name by using 
+a) An input dialog box: 
+Double click on input dialog box, then fill the details and set result value. 
+b) Message box: 
+Write the result value in text* section of message box. 
+Then connect flow char arrow to each box and click on debug file. 
+
+
+
+1c. Automate UiPath Number Calculation (Subtraction, Multiplication, Division of 
+numbers). 
+Step-1: click on Process 
+Step-2: Give name to the practical and click on create 
+S 
+Step-3: make main file as an given steps as follows (drag and drog all option from activity 
+search option): 
+a) Sequence box 
+b) Two input dialog boxes 
+Give values of input and set variable as Firstnum and Secondnum. 
+c) Four Message boxes: 
+Insert the value of text as "Division"+" "+(Firstnum/Secondnum).ToString. 
+
+1d. Create an automation UiPath project using different types of variables (number, 
+datetime, Boolean, generic, array, data table) 
+Step-1: click on Process 
+Step-2: Give name to the practical and click on create
