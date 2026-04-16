@@ -1,45 +1,79 @@
+
 1. Screen Scraping Methods
-Screen scraping is used for UI elements that don't have a clear "data" structure.
+ Common Initial Steps
 
-Common Initial Steps:
-Open UiPath Studio and create a Blank Process.
-On the Design tab (Top Ribbon), click the Screen Scraping icon.
-Use the mouse to click the application or window you want to scrape. This opens the Screen Scraper Wizard.
+Step 1: Open UiPath Studio
+Step 2: Click on Blank Process
+Step 3: Go to the Design tab (Top Ribbon)
+Step 4: Click on Screen Scraping
+Step 5: Use mouse to select the application/window
+Step 6: Screen Scraper Wizard will open
+
+ a) Full Text Method
+
+Step 1: In the Scraper Wizard, locate Scraping Method dropdown
+Step 2: Select Full Text (default option)
+Step 3: Click Finish
 
 
-a. Full Text
-Best for: High-speed extraction; can read hidden text.
-Step: In the Wizard’s Scraping Method dropdown (right side), select Full Text.
-Note: This is the default method. It captures the text but ignores the formatting/layout.
 
-Finish: Click Finish. UiPath generates a sequence with a Get Full Text activity.
+ b) Native Method
 
-b. Native
-Best for: Extracting text from applications that use GDI (like Notepad or older Windows apps); preserves text position.
-Step: Change the dropdown to Native.
-Options: Check No Formatting if you only want the raw text, or leave it unchecked to keep the relative positions of the words.
-Finish: Click Finish. UiPath generates a Get Visible Text activity.
+Step 1: In the Scraper Wizard, select Native from dropdown
+Step 2: Choose option:
 
-c. OCR (Optical Character Recognition)
-Best for: Scanned documents, virtual machines (Citrix/RDP), or images where text is not selectable.
-Step: Select OCR in the dropdown.
-Engine: Choose an OCR Engine (e.g., Tesseract OCR or UiPath Screen OCR).
-Finish: Click Finish. This creates a Get OCR Text activity with the chosen engine inside it.
+Check No Formatting → for raw text
+Uncheck → to keep text position
 
-2. Data Scraping & Variable Display
-Data Scraping is used specifically for structured data like tables, lists, or search results on a webpage.
-Demonstrate Data Scraping (Web Page):
-Open a browser (e.g., a search results page on Google or Amazon).
+Step 3: Click Finish
 
-Click the Table Extraction (Modern) or Data Scraping (Classic) icon in the Ribbon.
-Indicate: Select the first element (e.g., the name of a product).
+ c) OCR Method
 
-Pattern: Select a similar second element (the wizard will automatically identify the entire list).
-Rename: Rename the column (e.g., "Product Name") and click Next.
-Extract Correlated Data: Click "Extract Correlated Data" to pick another field, like "Price".
-Output: Click Finish. It will generate an Extract Structured Data activity and store results in a variable called ExtractDataTable.
+Step 1: In the Scraper Wizard, select OCR
+Step 2: Choose OCR Engine:
 
-Display in Message Box:
+Tesseract OCR
+UiPath Screen OCR
 
-Drag an Output Data Table activity. Set input to ExtractDataTable and create a string variable dtString (Ctrl+K).
-Drag a Message Box and input dtString.
+Step 3: Click Finish
+
+
+ 2. Data Scraping & Variable Display
+Data Scraping (Web Page)
+
+Step 1: Open a web page (e.g., Google/Amazon results)
+Step 2: Go to UiPath Studio → Click:
+
+Table Extraction (Modern) OR
+Data Scraping (Classic)
+
+Step 3: Click on first data element (e.g., product name)
+Step 4: Click on second similar element
+
+Step 5: Wizard auto-detects pattern
+
+Step 6: Rename column (e.g., "Product Name")
+Step 7: Click Next
+
+Step 8: Click Extract Correlated Data
+Step 9: Select another field (e.g., Price)
+
+Step 10: Click Finish
+
+
+Creates Extract Structured Data activity
+Stores data in variable: ExtractDataTable
+ Display Data in Message Box
+
+Step 1: Drag Output Data Table activity
+Step 2: Set:
+
+Input: ExtractDataTable
+Output: Create variable dtString
+
+Step 3: Drag Message Box activity
+Step 4: Enter:
+
+dtString
+
+Step 5: Run the workflow
